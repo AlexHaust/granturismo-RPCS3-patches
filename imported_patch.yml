@@ -604,7 +604,7 @@ PPU-1e55e08f6c3c9f460038096fc633dacef1d721db:
         BCES01893: [ 01.05 ]
     Author: "AlexHaust"
     Patch Version: 1.0
-    Notes: "Bloom/glare in every camera, not just bumper. Cannot be combined with Disable SPU MLAA."
+    Notes: "Bloom/glare in every camera, not just bumper. Cannot be combined with Disable SPU MLAA. Requires enabling Write Color Buffers AND Read Color Buffers."
     Patch:
       - [ be32, 0x004FB79C, 0x38000001 ] # li r0,1       (was clrldi r9,r3,32)   flag setter
       - [ be32, 0x004FB7A0, 0x98030004 ] # stb r0,4(r3)  (was stb r5,4(r9))

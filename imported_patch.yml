@@ -1,0 +1,728 @@
+Version: 1.2
+
+Anchors:
+  gt5_v211_fps: &gt5_v211_fps
+    - [ byte, 0x00185457, 0x00 ] # Unlock FPS ingame
+    - [ byte, 0x00185463, 0x00 ] # Unlock FPS ingame
+    #- [ be32, 0x0085f804, 0x38800000 ] # Unlock FPS in menu
+
+  gt5_v217_fps: &gt5_v217_fps
+    - [ byte, 0x001855cb, 0x00 ] # Unlock FPS ingame
+    - [ byte, 0x001855d7, 0x00 ] # Unlock FPS ingame
+    #- [ be32, 0x00861948, 0x38800000 ] # Unlock FPS in menu
+
+  gt5_unlockfps_notes: &gt5_unlockfps_notes
+    "Cutscenes rendered in the game's engine are sped up."
+
+  GT5_AR_Notes: &GT5_AR_Notes
+    "Requires \"Stretch To Display Area\" checked in the GPU settings. HUD elements stay at 16:9. Sometimes text doesn't show up."
+
+  GT5_AR_Configurable_values: &GT5_AR_Configurable_Values
+    "Aspect Ratio":
+      Type: double_enum
+      Value: &48_9_value 5.333333333333333
+      Allowed Values:
+        "48:9": *48_9_value
+        "32:9": 3.555555555555556
+        "21:9 (3840x1600)": 2.4
+        "21:9 (3440x1440)": 2.388888888888889
+        "21:9 (2560x1080)": 2.37037037037037
+        "16:10": 1.6
+        "4:3": 1.333333333333333
+        "5:4": 1.25
+
+  gt6_devlop_122: &gt6_devlop_122
+    - [ be32, 0x0081715c, 0x38600001 ]
+
+  gt6_devlop_notes: &gt6_devlop_notes
+    "Press Select+R1 to activate in main menu."
+
+  gthd_ar_notes: &gthd_ar_notes
+    "Requires \"Stretch To Display Area\" checked in the GPU settings."
+
+  gthd_fov_notes: &gthd_fov_notes
+    "Might work with other versions with adjustments."
+
+  gthd_fov_configurable_values: &gthd_fov_configurable_values
+    "FOV":
+      Type: double_range
+      Value: 0.75
+      Min: 0.1
+      Max: 1
+
+  gt6_fov_configurable_values: &gt6_fov_configurable_values
+    "FOV":
+      Type: double_enum
+      Value: 0.6
+      Allowed Values:
+        "Stock (1.00x)": 0.5
+        "1.10x": 0.55
+        "1.20x": 0.6
+        "1.30x": 0.65
+        "1.40x": 0.7
+        "1.50x": 0.75
+
+  gthd_nohud_notes: &gthd_nohud_notes
+    "Disables in-game HUD. Needs further testing."
+
+PPU-d73f342bf28ee016ef3d0ccb309b1acb03d8ecce:
+
+  "Disable Driver Rendering":
+    Games:
+      "Gran Turismo 5":
+        BCUS98114: [ 02.11 ]
+    Author: "ZipperedRain"
+    Notes: "Removes the driver from view. A percentage of cars lose parts such as doors, bumpers, hoods, wipers or tachometer needles."
+    Patch Version: 1.0
+    Patch:
+      - [ be32, 0x01424C4C, 0x60000000 ]
+
+  "Disable Steering Wheel Rendering":
+    Games:
+      "Gran Turismo 5":
+        BCUS98114: [ 02.11 ]
+    Author: "ZipperedRain"
+    Notes: "Removes the steering wheel from view. A percentage of cars lose parts such as doors, bumpers, hoods, wipers or tachometer needles."
+    Patch Version: 1.0
+    Patch:
+      - [ be32, 0x015BCAFC, 0x60000000 ]
+
+PPU-7a5ee7bc2fef9566dd80e35893fe2c5571197726:
+
+  "Disable Driver Rendering":
+    Games:
+      "Gran Turismo 5":
+        BCES00569: [ 02.11 ]
+    Author: "ZipperedRain, AlexHaust"
+    Notes: "Removes the driver from view. A percentage of cars lose parts such as doors, bumpers, hoods, wipers or tachometer needles."
+    Patch Version: 1.0
+    Patch:
+      - [ be32, 0x01424C4C, 0x60000000 ]
+
+  "Disable Steering Wheel Rendering":
+    Games:
+      "Gran Turismo 5":
+        BCES00569: [ 02.11 ]
+    Author: "ZipperedRain, AlexHaust"
+    Notes: "Removes the steering wheel from view. A percentage of cars lose parts such as doors, bumpers, hoods, wipers or tachometer needles."
+    Patch Version: 1.0
+    Patch:
+      - [ be32, 0x015BCAFC, 0x60000000 ]
+
+PPU-26c56a42dbc303893506c4b76b496780f204d329:
+
+  "Disable Dithering":
+    Games:
+      "Gran Turismo 5":
+        BCJS30001: [ 02.11 ]
+    Author: "Pappapatu"
+    Patch Version: 1.0
+    Notes: "Disables Dithering (a noise effect most noticeable in darker areas of the game). May introduce colour banding. AI tool assisted"
+    Patch:
+      - [ be32, 0x008EA364, 0x4E800020 ]
+
+  "Enable Bloom and Lens Flares in All Cameras":
+    Games:
+      "Gran Turismo 5":
+        BCJS30001: [ 02.11 ]
+    Author: "Pappapatu"
+    Patch Version: 1.0
+    Notes: "Forces Bloom and Lens Flare effects in all cameras (previously only enabled in the Bumper camera). AI tool assisted"
+    Patch:
+      - [ be32, 0x00423c04, 0x4800002C ]
+
+PPU-6ac472e1f334f54ec4753cde9e8e1515bfab4d17:
+
+  "Enable Bloom/Glare in All Cameras":
+    Games:
+      "Gran Turismo 6":
+        BCUS98296: [ 01.22 ]
+    Author: "AlexHaust"
+    Patch Version: 1.0
+    Notes: "Bloom/glare in every camera, not just bumper. Cannot be combined with Disable SPU MLAA."
+    Patch:
+      - [ be32, 0x0056D95C, 0x38000001 ] # li r0,1       (was clrldi r9,r3,32)   flag setter
+      - [ be32, 0x0056D960, 0x98030004 ] # stb r0,4(r3)  (was stb r5,4(r9))
+      - [ be32, 0x0056E1DC, 0x38000001 ] # li r0,1       (was clrldi r9,r31,32)  enableFlags/disableFlags
+      - [ be32, 0x0056E1E0, 0x981F0004 ] # stb r0,4(r31) (was stb r30,4(r9))
+      - [ be32, 0x00570234, 0x38000001 ] # li r0,1       (was li r0,0)           constructor reset
+
+  "Disable SPU MLAA":
+    Games:
+      "Gran Turismo 6":
+        BCUS98296: [ 01.22 ]
+    Author: "AlexHaust"
+    Patch Version: 1.0
+    Notes: "Removes Morphological Anti-Aliasing, known as \"MLAA\", a form of post process anti-aliasing which is done using the CELL's SPUs instead of the RSX for extra performance."
+    Patch:
+      - [ be32, 0x008C2004, 0x60000000 ] # nop (was bl 0xC2FED4, first MLAA job call)
+      - [ be32, 0x008C2080, 0x60000000 ] # nop (was bl 0xC2FD90, GPU wait on the SPU job semaphore)
+      - [ calloc, 0x008C2060, 21 ] # replaces bl 0xC2FED4 (MLAA job), returns to 0x8C2064
+      - [ be32, 0x0, 0xF821FF01 ] # stdu r1,-0x100(r1)
+      - [ be32, 0x0, 0x7C0802A6 ] # mflr r0
+      - [ be32, 0x0, 0xF8010110 ] # std r0,0x110(r1)
+      - [ be32, 0x0, 0x80E40000 ] # lwz r7,0(r4) (src: scene buffer address)
+      - [ be32, 0x0, 0x81040004 ] # lwz r8,4(r4) (src pitch)
+      - [ be32, 0x0, 0xA0040014 ] # lhz r0,0x14(r4) (width)
+      - [ be32, 0x0, 0xF8010070 ] # std r0,0x70(r1)
+      - [ be32, 0x0, 0xA0040016 ] # lhz r0,0x16(r4) (height)
+      - [ be32, 0x0, 0xF8010078 ] # std r0,0x78(r1)
+      - [ be32, 0x0, 0x38000004 ] # li r0,4 (bytes per pixel)
+      - [ be32, 0x0, 0xF8010080 ] # std r0,0x80(r1)
+      - [ be32, 0x0, 0x80830004 ] # lwz r4,4(r3) (dst pitch)
+      - [ be32, 0x0, 0x80630000 ] # lwz r3,0(r3) (dst: display buffer address)
+      - [ be32, 0x0, 0x38A00000 ] # li r5,0 (dst x)
+      - [ be32, 0x0, 0x38C00000 ] # li r6,0 (dst y)
+      - [ be32, 0x0, 0x39200000 ] # li r9,0 (src x)
+      - [ be32, 0x0, 0x39400000 ] # li r10,0 (src y)
+      - [ jumpl, 0x0, 0x00C3E050 ] # bl copy wrapper (dst, dpitch, dx, dy, src, spitch, sx, sy; w/h/bpp on stack)
+      - [ be32, 0x0, 0xE8010110 ] # ld r0,0x110(r1)
+      - [ be32, 0x0, 0x7C0803A6 ] # mtlr r0
+      - [ be32, 0x0, 0x38210100 ] # addi r1,r1,0x100
+
+  "Disable Motion Blur":
+    Games:
+      "Gran Turismo 6":
+        BCUS98296: [ 01.22 ]
+    Author: "illusion, AlexHaust"
+    Patch Version: 1.0
+    Notes: "Disables motion blur in replay mode. Fixes black replay screen."
+    Patch:
+      - [ be32, 0x008C2B4C, 0x38600000 ] # li r3,0 (was bl)
+
+  "Extended FOV":
+    Games:
+      "Gran Turismo 6":
+        BCUS98296: [ 01.22 ]
+    Author: "AlexHaust"
+    Patch Version: 1.0
+    Configurable Values: *gt6_fov_configurable_values
+    Notes: "Widens the field of view in all race cameras and replays."
+    Patch:
+      - [ bef32, 0x011D6938, "FOV" ] # half-angle factor in the perspective builder (stock 0.5)
+
+  "Aspect Ratio":
+    Games:
+      "Gran Turismo 6":
+        BCUS98296: [ 01.22 ]
+    Author: "AlexHaust"
+    Patch Version: 1.0
+    Notes: 'Requires "Stretch To Display Area" checked in the GPU settings. HUD, menus and UI keep their 16:9 layout. For a sharper image, also enable Disable SPU MLAA and raise Resolution Scale.'
+    Configurable Values:
+      "Aspect Ratio":
+        Type: double_enum
+        Value: 5.333333333333333
+        Allowed Values:
+          "1 monitor, 16:9 (unmodified)": 1.777777777777778
+          "1 monitor, 16:10": 1.6
+          "1 monitor, 21:9 (2560x1080)": 2.37037037037037
+          "1 monitor, 21:9 (3440x1440)": 2.388888888888889
+          "1 monitor, 21:9 (3840x1600)": 2.4
+          "1 monitor, 32:9 / 2 monitors, 16:9": 3.555555555555556
+          "1 monitor, 4:3": 1.333333333333333
+          "1 monitor, 5:4": 1.25
+          "2 monitors, 16:10 (32:10)": 3.2
+          "3 monitors, 16:9 (48:9)": 5.333333333333333
+          "3 monitors, 16:10 (48:10)": 4.8
+          "3 monitors, 21:9 2560x1080 (64:9)": 7.111111111111111
+          "3 monitors, 21:9 3440x1440 (43:6)": 7.166666666666667
+          "3 monitors, 4:3 (12:3)": 4.0
+          "3 monitors, 5:4 (15:4)": 3.75
+          "3 monitors, 16:9 portrait (27:16)": 1.6875
+          "5 monitors, 16:9 (80:9)": 8.88888888888889
+    Patch:
+      - [ bef32, 0x01550880, "Aspect Ratio" ] # target aspect (unused page tail after the code segment)
+      - [ bef32, 0x01550884, 1.70 ] # lower bound of "16:9"
+      - [ bef32, 0x01550888, 1.85 ] # upper bound of "16:9"
+      - [ calloc, 0x008A615C, 9 ] # screen-aspect getter wrapper 0x8A6144, right after bl 0x8FF168; returns to 0x8A6160
+      - [ be32, 0x0, 0xE8010080 ] # ld r0, 0x80(r1) (original)
+      - [ be32, 0x0, 0x3D200155 ] # lis r9, 0x155
+      - [ be32, 0x0, 0xC0090884 ] # lfs f0, 0x884(r9) (1.70)
+      - [ be32, 0x0, 0xFF810000 ] # fcmpu cr7, f1, f0
+      - [ be32, 0x0, 0x419C0014 ] # blt cr7, +0x14 (keep stock; lands on the return branch)
+      - [ be32, 0x0, 0xC0090888 ] # lfs f0, 0x888(r9) (1.85)
+      - [ be32, 0x0, 0xFF810000 ] # fcmpu cr7, f1, f0
+      - [ be32, 0x0, 0x419D0008 ] # bgt cr7, +0x8 (keep stock)
+      - [ be32, 0x0, 0xC0290880 ] # lfs f1, 0x880(r9) (return the chosen aspect)
+
+  "Unlock FPS":
+    Games:
+      "Gran Turismo 6":
+        BCUS98296: [ 01.22 ]
+    Author: "AlexHaust"
+    Patch Version: 1.0
+    Notes: "Unlocks FPS ingame."
+    Patch:
+      - [ byte, 0x001F946B, 0x00 ] # li rX, 1 -> li rX, 0
+      - [ byte, 0x001F9473, 0x00 ] # li rX, 2 -> li rX, 0
+
+  "Disable Steering Wheel Rendering":
+    Games:
+      "Gran Turismo 6":
+        BCUS98296: [ 01.22 ]
+    Author: "ZipperedRain"
+    Patch Version: 1.0
+    Notes: "Removes the steering wheel from view. A percentage of cars lose parts such as doors, bumpers, hoods, wipers or tachometer needles."
+    Patch:
+      - [ be32, 0x013A4B6C, 0x60000000 ]
+
+  "Disable Driver Rendering":
+    Games:
+      "Gran Turismo 6":
+        BCUS98296: [ 01.22 ]
+    Author: "ZipperedRain"
+    Patch Version: 1.0
+    Notes: "Removes the driver from view. A percentage of cars lose parts such as doors, bumpers, hoods, wipers or tachometer needles."
+    Patch:
+      - [ be32, 0x011D5F48, 0x60000000 ]
+
+  "Enable Motion Blur in Gameplay":
+    Games:
+      "Gran Turismo 6":
+        BCUS98296: [ 01.22 ]
+    Author: "AlexHaust"
+    Patch Version: 0.1
+    Notes: "Enables replay motion blur in gameplay modes."
+    Patch:
+      - [ be32, 0x0056F2A4, 0x60000000 ] # nop (was beq cr7) - ignore the blur flag (scene-command "blur", +0xB4)
+      - [ be32, 0x0056F2B0, 0x60000000 ] # nop (was beq cr7) - ignore the second enable
+
+PPU-d93a41467fce046bfbfb9648faee9e4e7963518d:
+
+  "Enable Bloom/Glare in All Cameras":
+    Games:
+      "Gran Turismo 6":
+        BCUS98296: [ 01.05 ]
+    Author: "AlexHaust"
+    Patch Version: 1.0
+    Notes: "Forces Bloom/glare in every camera (previously only enabled in the Bumper camera). Cannot be combined with Disable SPU MLAA. Requires enabling Write Color Buffers AND Read Color Buffers."
+    Patch:
+      - [ be32, 0x004FB79C, 0x38000001 ] # li r0,1       (was clrldi r9,r3,32)   flag setter
+      - [ be32, 0x004FB7A0, 0x98030004 ] # stb r0,4(r3)  (was stb r5,4(r9))
+      - [ be32, 0x004FBFC4, 0x38000001 ] # li r0,1       (was clrldi r9,r31,32)  enableFlags/disableFlags
+      - [ be32, 0x004FBFC8, 0x981F0004 ] # stb r0,4(r31) (was stb r30,4(r9))
+      - [ be32, 0x004FE030, 0x38000001 ] # li r0,1       (was li r0,0)           constructor reset
+
+  "Disable SPU MLAA":
+    Games:
+      "Gran Turismo 6":
+        BCUS98296: [ 01.05 ]
+    Author: "AlexHaust"
+    Patch Version: 1.0
+    Notes: "Removes Morphological Anti-Aliasing, known as \"MLAA\", a form of post process anti-aliasing which is done using the CELL's SPUs instead of the RSX for extra performance."
+    Patch:
+      - [ be32, 0x00E13E88, 0x39E00001 ] # li r15,1
+
+  "Disable Motion Blur":
+    Games:
+      "Gran Turismo 6":
+        BCUS98296: [ 01.05 ]
+    Author: "illusion, AlexHaust"
+    Patch Version: 1.0
+    Notes: "Disables motion blur in replay mode."
+    Patch:
+      - [ be32, 0x0083D074, 0x38600000 ] # li r3,0 (was bl)
+
+  "Extended FOV":
+    Games:
+      "Gran Turismo 6":
+        BCUS98296: [ 01.05 ]
+    Author: "AlexHaust"
+    Patch Version: 1.0
+    Configurable Values: *gt6_fov_configurable_values
+    Notes: "Widens the field of view in all race cameras and replays."
+    Patch:
+      - [ bef32, 0x01106638, "FOV" ] # half-angle factor in the perspective builder (stock 0.5)
+
+  "Aspect Ratio":
+    Games:
+      "Gran Turismo 6":
+        BCUS98296: [ 01.05 ]
+    Author: "AlexHaust"
+    Patch Version: 1.0
+    Notes: 'Requires "Stretch To Display Area" checked in the GPU settings. HUD elements stay at 16:9.'
+    Configurable Values:
+      "Aspect Ratio":
+        Type: double_enum
+        Value: 5.333333333333333
+        Allowed Values:
+          "1 monitor, 16:9 (unmodified)": 1.777777777777778
+          "1 monitor, 16:10": 1.6
+          "1 monitor, 21:9 (2560x1080)": 2.37037037037037
+          "1 monitor, 21:9 (3440x1440)": 2.388888888888889
+          "1 monitor, 21:9 (3840x1600)": 2.4
+          "1 monitor, 32:9 / 2 monitors, 16:9": 3.555555555555556
+          "1 monitor, 4:3": 1.333333333333333
+          "1 monitor, 5:4": 1.25
+          "2 monitors, 16:10 (32:10)": 3.2
+          "3 monitors, 16:9 (48:9)": 5.333333333333333
+          "3 monitors, 16:10 (48:10)": 4.8
+          "3 monitors, 21:9 2560x1080 (64:9)": 7.111111111111111
+          "3 monitors, 21:9 3440x1440 (43:6)": 7.166666666666667
+          "3 monitors, 4:3 (12:3)": 4.0
+          "3 monitors, 5:4 (15:4)": 3.75
+          "3 monitors, 16:9 portrait (27:16)": 1.6875
+          "5 monitors, 16:9 (80:9)": 8.88888888888889
+    Patch:
+      - [ bef32, 0x010DD5D0, "Aspect Ratio" ]
+
+  "Unlock FPS":
+    Games:
+      "Gran Turismo 6":
+        BCUS98296: [ 01.05 ]
+    Author: "AlexHaust"
+    Patch Version: 1.0
+    Notes: "Unlocks FPS ingame."
+    Patch:
+      - [ byte, 0x001D8BD7, 0x00 ] # li rX, 1 -> li rX, 0
+      - [ byte, 0x001D8BE3, 0x00 ] # li rX, 2 -> li rX, 0
+
+  "Disable Steering Wheel Rendering":
+    Games:
+      "Gran Turismo 6":
+        BCUS98296: [ 01.05 ]
+    Author: "AlexHaust"
+    Patch Version: 0.1
+    Notes: "Removes the steering wheel from view. A percentage of cars lose parts such as doors, bumpers, hoods, wipers or tachometer needles."
+    Patch:
+      - [ be32, 0x012CAE2C, 0x60000000 ]
+
+  "Enable Motion Blur in Gameplay":
+    Games:
+      "Gran Turismo 6":
+        BCUS98296: [ 01.05 ]
+    Author: "AlexHaust"
+    Patch Version: 0.1
+    Notes: "Enables replay motion blur in gameplay modes."
+    Patch:
+      - [ be32, 0x004FD0D4, 0x60000000 ] # nop (was beq cr7) - ignore the blur flag (scene-command "blur", +0xB4)
+      - [ be32, 0x004FD0E0, 0x60000000 ] # nop (was beq cr7) - ignore the second enable
+
+  "Develop Settings":
+    Games:
+      "Gran Turismo 6":
+        BCUS98296: [ 01.05 ]
+    Author: "Nenkai (OpenAdhoc), AlexHaust"
+    Patch Version: 1.0
+    Notes: "Press Select+R1 to activate in main menu."
+    Patch:
+      - [ load, [ [ be32, 0x0079755C, 0x38600001 ] ] ]
+
+  "Disable Driver Rendering":
+    Games:
+      "Gran Turismo 6":
+        BCUS98296: [ 01.05 ]
+    Author: "AlexHaust"
+    Patch Version: 0.1
+    Notes: "Removes the driver from view. A percentage of cars lose parts such as doors, bumpers, hoods, wipers or tachometer needles. Breaks car audio such as engine, exhaust, and tire noise."
+    Patch:
+      - [ be32, 0x01105C68, 0x60000000 ]
+
+PPU-638ef307e2b35d593f599efec0dc0c37059a984b:
+
+  "Enable Bloom/Glare in All Cameras":
+    Games:
+      "Gran Turismo 6":
+        BCES01893: [ 01.22 ]
+    Author: "AlexHaust"
+    Patch Version: 1.0
+    Notes: "Bloom/glare in every camera, not just bumper. Cannot be combined with Disable SPU MLAA."
+    Patch:
+      - [ be32, 0x0056D95C, 0x38000001 ] # li r0,1       (was clrldi r9,r3,32)   flag setter
+      - [ be32, 0x0056D960, 0x98030004 ] # stb r0,4(r3)  (was stb r5,4(r9))
+      - [ be32, 0x0056E1DC, 0x38000001 ] # li r0,1       (was clrldi r9,r31,32)  enableFlags/disableFlags
+      - [ be32, 0x0056E1E0, 0x981F0004 ] # stb r0,4(r31) (was stb r30,4(r9))
+      - [ be32, 0x00570234, 0x38000001 ] # li r0,1       (was li r0,0)           constructor reset
+
+  "Disable SPU MLAA":
+    Games:
+      "Gran Turismo 6":
+        BCES01893: [ 01.22 ]
+    Author: "AlexHaust"
+    Patch Version: 1.0
+    Notes: "Removes Morphological Anti-Aliasing, known as \"MLAA\", a form of post process anti-aliasing which is done using the CELL's SPUs instead of the RSX for extra performance."
+    Patch:
+      - [ be32, 0x008C2004, 0x60000000 ] # nop (was bl 0xC2FED4, first MLAA job call)
+      - [ be32, 0x008C2080, 0x60000000 ] # nop (was bl 0xC2FD90, GPU wait on the SPU job semaphore)
+      - [ calloc, 0x008C2060, 21 ] # replaces bl 0xC2FED4 (MLAA job), returns to 0x8C2064
+      - [ be32, 0x0, 0xF821FF01 ] # stdu r1,-0x100(r1)
+      - [ be32, 0x0, 0x7C0802A6 ] # mflr r0
+      - [ be32, 0x0, 0xF8010110 ] # std r0,0x110(r1)
+      - [ be32, 0x0, 0x80E40000 ] # lwz r7,0(r4) (src: scene buffer address)
+      - [ be32, 0x0, 0x81040004 ] # lwz r8,4(r4) (src pitch)
+      - [ be32, 0x0, 0xA0040014 ] # lhz r0,0x14(r4) (width)
+      - [ be32, 0x0, 0xF8010070 ] # std r0,0x70(r1)
+      - [ be32, 0x0, 0xA0040016 ] # lhz r0,0x16(r4) (height)
+      - [ be32, 0x0, 0xF8010078 ] # std r0,0x78(r1)
+      - [ be32, 0x0, 0x38000004 ] # li r0,4 (bytes per pixel)
+      - [ be32, 0x0, 0xF8010080 ] # std r0,0x80(r1)
+      - [ be32, 0x0, 0x80830004 ] # lwz r4,4(r3) (dst pitch)
+      - [ be32, 0x0, 0x80630000 ] # lwz r3,0(r3) (dst: display buffer address)
+      - [ be32, 0x0, 0x38A00000 ] # li r5,0 (dst x)
+      - [ be32, 0x0, 0x38C00000 ] # li r6,0 (dst y)
+      - [ be32, 0x0, 0x39200000 ] # li r9,0 (src x)
+      - [ be32, 0x0, 0x39400000 ] # li r10,0 (src y)
+      - [ jumpl, 0x0, 0x00C3E050 ] # bl copy wrapper (dst, dpitch, dx, dy, src, spitch, sx, sy; w/h/bpp on stack)
+      - [ be32, 0x0, 0xE8010110 ] # ld r0,0x110(r1)
+      - [ be32, 0x0, 0x7C0803A6 ] # mtlr r0
+      - [ be32, 0x0, 0x38210100 ] # addi r1,r1,0x100
+
+  "Disable Motion Blur":
+    Games:
+      "Gran Turismo 6":
+        BCES01893: [ 01.22 ]
+    Author: "illusion, AlexHaust"
+    Patch Version: 1.0
+    Notes: "Disables motion blur in replay mode. Fixes black replay screen."
+    Patch:
+      - [ be32, 0x008C2B4C, 0x38600000 ] # li r3,0 (was bl)
+
+  "Extended FOV":
+    Games:
+      "Gran Turismo 6":
+        BCES01893: [ 01.22 ]
+    Author: "AlexHaust"
+    Patch Version: 1.0
+    Configurable Values: *gt6_fov_configurable_values
+    Notes: "Widens the field of view in all race cameras and replays."
+    Patch:
+      - [ bef32, 0x011D6938, "FOV" ] # half-angle factor in the perspective builder (stock 0.5)
+
+  "Disable Driver Rendering":
+    Games:
+      "Gran Turismo 6":
+        BCES01893: [ 01.22 ]
+    Author: "AlexHaust"
+    Patch Version: 1.0
+    Notes: "Removes the driver from view. A percentage of cars lose parts such as doors, bumpers, hoods, wipers or tachometer needles."
+    Patch:
+      - [ be32, 0x011D5F48, 0x60000000 ]
+
+  "Enable Motion Blur in Gameplay":
+    Games:
+      "Gran Turismo 6":
+        BCES01893: [ 01.22 ]
+    Author: "AlexHaust"
+    Patch Version: 0.1
+    Notes: "Enables replay motion blur in gameplay modes."
+    Patch:
+      - [ be32, 0x0056F2A4, 0x60000000 ] # nop (was beq cr7) - ignore the blur flag (scene-command "blur", +0xB4)
+      - [ be32, 0x0056F2B0, 0x60000000 ] # nop (was beq cr7) - ignore the second enable
+
+  "Aspect Ratio":
+    Games:
+      "Gran Turismo 6":
+        BCES01893: [ 01.22 ]
+    Author: "AlexHaust"
+    Patch Version: 1.0
+    Notes: 'Requires "Stretch To Display Area" checked in the GPU settings. HUD, menus and UI keep their 16:9 layout. For a sharper image, also enable Disable SPU MLAA and raise Resolution Scale.'
+    Configurable Values:
+      "Aspect Ratio":
+        Type: double_enum
+        Value: 5.333333333333333
+        Allowed Values:
+          "1 monitor, 16:9 (unmodified)": 1.777777777777778
+          "1 monitor, 16:10": 1.6
+          "1 monitor, 21:9 (2560x1080)": 2.37037037037037
+          "1 monitor, 21:9 (3440x1440)": 2.388888888888889
+          "1 monitor, 21:9 (3840x1600)": 2.4
+          "1 monitor, 32:9 / 2 monitors, 16:9": 3.555555555555556
+          "1 monitor, 4:3": 1.333333333333333
+          "1 monitor, 5:4": 1.25
+          "2 monitors, 16:10 (32:10)": 3.2
+          "3 monitors, 16:9 (48:9)": 5.333333333333333
+          "3 monitors, 16:10 (48:10)": 4.8
+          "3 monitors, 21:9 2560x1080 (64:9)": 7.111111111111111
+          "3 monitors, 21:9 3440x1440 (43:6)": 7.166666666666667
+          "3 monitors, 4:3 (12:3)": 4.0
+          "3 monitors, 5:4 (15:4)": 3.75
+          "3 monitors, 16:9 portrait (27:16)": 1.6875
+          "5 monitors, 16:9 (80:9)": 8.88888888888889
+    Patch:
+      - [ bef32, 0x01550880, "Aspect Ratio" ] # target aspect (unused page tail after the code segment)
+      - [ bef32, 0x01550884, 1.70 ] # lower bound of "16:9"
+      - [ bef32, 0x01550888, 1.85 ] # upper bound of "16:9"
+      - [ calloc, 0x008A615C, 9 ] # screen-aspect getter wrapper 0x8A6144, right after bl 0x8FF168; returns to 0x8A6160
+      - [ be32, 0x0, 0xE8010080 ] # ld r0, 0x80(r1) (original)
+      - [ be32, 0x0, 0x3D200155 ] # lis r9, 0x155
+      - [ be32, 0x0, 0xC0090884 ] # lfs f0, 0x884(r9) (1.70)
+      - [ be32, 0x0, 0xFF810000 ] # fcmpu cr7, f1, f0
+      - [ be32, 0x0, 0x419C0014 ] # blt cr7, +0x14 (keep stock; lands on the return branch)
+      - [ be32, 0x0, 0xC0090888 ] # lfs f0, 0x888(r9) (1.85)
+      - [ be32, 0x0, 0xFF810000 ] # fcmpu cr7, f1, f0
+      - [ be32, 0x0, 0x419D0008 ] # bgt cr7, +0x8 (keep stock)
+      - [ be32, 0x0, 0xC0290880 ] # lfs f1, 0x880(r9) (return the chosen aspect)
+
+  "Unlock FPS":
+    Games:
+      "Gran Turismo 6":
+        BCES01893: [ 01.22 ]
+    Author: "AlexHaust"
+    Patch Version: 1.0
+    Notes: "Unlocks FPS ingame."
+    Patch:
+      - [ byte, 0x001F946B, 0x00 ] # li rX, 1 -> li rX, 0
+      - [ byte, 0x001F9473, 0x00 ] # li rX, 2 -> li rX, 0
+
+  "Disable Steering Wheel Rendering":
+    Games:
+      "Gran Turismo 6":
+        BCES01893: [ 01.22 ]
+    Author: "AlexHaust"
+    Patch Version: 1.0
+    Notes: "Removes the steering wheel from view. A percentage of cars lose parts such as doors, bumpers, hoods, wipers or tachometer needles."
+    Patch:
+      - [ be32, 0x013A4B6C, 0x60000000 ]
+
+PPU-eb138389a69f839574aa91dee6fac66c2b2fb839:
+
+  "Disable Dithering":
+    Games:
+      "Gran Turismo 5":
+        BCAS20108: [ 02.11 ]
+    Author: "Pappapatu"
+    Patch Version: 1.0
+    Notes: "Disables Dithering (a noise effect most noticeable in darker areas of the game). May introduce colour banding. AI tool assisted"
+    Patch:
+      - [ be32, 0x008EA364, 0x4E800020 ]
+
+  "Enable Bloom and Lens Flares in All Cameras":
+    Games:
+      "Gran Turismo 5":
+        BCAS20108: [ 02.11 ]
+    Author: "Pappapatu"
+    Patch Version: 1.0
+    Notes: "Forces Bloom and Lens Flare effects in all cameras (previously only enabled in the Bumper camera). AI tool assisted"
+    Patch:
+      - [ be32, 0x00423c04, 0x4800002C ]
+
+PPU-1e55e08f6c3c9f460038096fc633dacef1d721db:
+
+  "Enable Bloom/Glare in All Cameras":
+    Games:
+      "Gran Turismo 6":
+        BCES01893: [ 01.05 ]
+    Author: "AlexHaust"
+    Patch Version: 1.0
+    Notes: "Bloom/glare in every camera, not just bumper. Cannot be combined with Disable SPU MLAA."
+    Patch:
+      - [ be32, 0x004FB79C, 0x38000001 ] # li r0,1       (was clrldi r9,r3,32)   flag setter
+      - [ be32, 0x004FB7A0, 0x98030004 ] # stb r0,4(r3)  (was stb r5,4(r9))
+      - [ be32, 0x004FBFC4, 0x38000001 ] # li r0,1       (was clrldi r9,r31,32)  enableFlags/disableFlags
+      - [ be32, 0x004FBFC8, 0x981F0004 ] # stb r0,4(r31) (was stb r30,4(r9))
+      - [ be32, 0x004FE030, 0x38000001 ] # li r0,1       (was li r0,0)           constructor reset
+
+  "Disable SPU MLAA":
+    Games:
+      "Gran Turismo 6":
+        BCES01893: [ 01.05 ]
+    Author: "AlexHaust"
+    Patch Version: 1.0
+    Notes: "Removes Morphological Anti-Aliasing, known as \"MLAA\", a form of post process anti-aliasing which is done using the CELL's SPUs instead of the RSX for extra performance."
+    Patch:
+      - [ be32, 0x00E13E88, 0x39E00001 ] # li r15,1
+
+  "Disable Motion Blur":
+    Games:
+      "Gran Turismo 6":
+        BCES01893: [ 01.05 ]
+    Author: "illusion, AlexHaust"
+    Patch Version: 1.0
+    Notes: "Disables motion blur in replay mode."
+    Patch:
+      - [ be32, 0x0083D074, 0x38600000 ] # li r3,0 (was bl)
+
+  "Extended FOV":
+    Games:
+      "Gran Turismo 6":
+        BCES01893: [ 01.05 ]
+    Author: "AlexHaust"
+    Patch Version: 1.0
+    Configurable Values: *gt6_fov_configurable_values
+    Notes: "Widens the field of view in all race cameras and replays."
+    Patch:
+      - [ bef32, 0x01106638, "FOV" ] # half-angle factor in the perspective builder (stock 0.5)
+
+  "Develop Settings":
+    Games:
+      "Gran Turismo 6":
+        BCES01893: [ 01.05 ]
+    Author: "Nenkai (OpenAdhoc), AlexHaust"
+    Patch Version: 1.0
+    Notes: "Press Select+R1 to activate in main menu."
+    Patch:
+      - [ load, [ [ be32, 0x0079755C, 0x38600001 ] ] ]
+
+  "Aspect Ratio":
+    Games:
+      "Gran Turismo 6":
+        BCES01893: [ 01.05 ]
+    Author: "AlexHaust"
+    Patch Version: 1.0
+    Notes: 'Requires "Stretch To Display Area" checked in the GPU settings. HUD, menus and UI keep their 16:9 layout.'
+    Configurable Values:
+      "Aspect Ratio":
+        Type: double_enum
+        Value: 5.333333333333333
+        Allowed Values:
+          "1 monitor, 16:9 (unmodified)": 1.777777777777778
+          "1 monitor, 16:10": 1.6
+          "1 monitor, 21:9 (2560x1080)": 2.37037037037037
+          "1 monitor, 21:9 (3440x1440)": 2.388888888888889
+          "1 monitor, 21:9 (3840x1600)": 2.4
+          "1 monitor, 32:9 / 2 monitors, 16:9": 3.555555555555556
+          "1 monitor, 4:3": 1.333333333333333
+          "1 monitor, 5:4": 1.25
+          "2 monitors, 16:10 (32:10)": 3.2
+          "3 monitors, 16:9 (48:9)": 5.333333333333333
+          "3 monitors, 16:10 (48:10)": 4.8
+          "3 monitors, 21:9 2560x1080 (64:9)": 7.111111111111111
+          "3 monitors, 21:9 3440x1440 (43:6)": 7.166666666666667
+          "3 monitors, 4:3 (12:3)": 4.0
+          "3 monitors, 5:4 (15:4)": 3.75
+          "3 monitors, 16:9 portrait (27:16)": 1.6875
+          "5 monitors, 16:9 (80:9)": 8.88888888888889
+    Patch:
+      - [ bef32, 0x010DD5D0, "Aspect Ratio" ]
+
+  "Unlock FPS":
+    Games:
+      "Gran Turismo 6":
+        BCES01893: [ 01.05 ]
+    Author: "AlexHaust"
+    Patch Version: 1.0
+    Notes: "Unlocks FPS ingame."
+    Patch:
+      - [ byte, 0x001D8BD7, 0x00 ] # li rX, 1 -> li rX, 0
+      - [ byte, 0x001D8BE3, 0x00 ] # li rX, 2 -> li rX, 0
+
+  "Disable Steering Wheel Rendering":
+    Games:
+      "Gran Turismo 6":
+        BCES01893: [ 01.05 ]
+    Author: "AlexHaust"
+    Patch Version: 0.1
+    Notes: "Removes the steering wheel from view. A percentage of cars lose parts such as doors, bumpers, hoods, wipers or tachometer needles."
+    Patch:
+      - [ be32, 0x012CAE2C, 0x60000000 ]
+
+  "Disable Driver Rendering":
+    Games:
+      "Gran Turismo 6":
+        BCES01893: [ 01.05 ]
+    Author: "AlexHaust"
+    Patch Version: 0.1
+    Notes: "Removes the driver from view. A percentage of cars lose parts such as doors, bumpers, hoods, wipers or tachometer needles. Breaks car audio such as engine, exhaust, and tire noise."
+    Patch:
+      - [ be32, 0x01105C68, 0x60000000 ]
+
+  "Enable Motion Blur in Gameplay":
+    Games:
+      "Gran Turismo 6":
+        BCES01893: [ 01.05 ]
+    Author: "AlexHaust"
+    Patch Version: 0.1
+    Notes: "Enables replay motion blur in gameplay modes."
+    Patch:
+      - [ be32, 0x004FD0D4, 0x60000000 ] # nop (was beq cr7) - ignore the blur flag (scene-command "blur", +0xB4)
+      - [ be32, 0x004FD0E0, 0x60000000 ] # nop (was beq cr7) - ignore the second enable

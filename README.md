@@ -10,4 +10,4 @@ All patches are in `imported_patch.yml`. Copy the file into RPCS3's `patches` fo
 | Gran Turismo 6 | 1.22 | BCUS98296 (US), BCES01893 (EU) |
 | Gran Turismo 6 | 1.05 | BCUS98296 (US), BCES01893 (EU) |
 
-TODO: patch list, usage notes, credits
+TODO: patch list, usage notes, credits, roadmap

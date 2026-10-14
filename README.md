@@ -1,7 +1,13 @@
 # granturismo5-6-patches
-RPCS3 patches for Gran Turismo 5 and Gran Turismo 6. Work in progress.
+RPCS3 patches for Gran Turismo 5 and 6: camera, graphics, HUD and control tweaks.
+ 
+All patches are in `imported_patch.yml`. Copy the file into RPCS3's `patches` folder, then enable the entries you want in the Patch Manager.
+ 
+# Supported Games
+| Game | Version | Serials |
+|---|---|---|
+| Gran Turismo 5 | 2.11 | BCUS98114 (US), BCES00569 (EU) |
+| Gran Turismo 6 | 1.22 | BCUS98296 (US), BCES01893 (EU) |
+| Gran Turismo 6 | 1.05 | BCUS98296 (US), BCES01893 (EU) |
 
-To install, download the `imported_patch.yml` file and move it into `~/rpcs3-*/patches`.
-
-## ⚠️ Warning! ⚠️
-Patches are currently in development and are incomplete. Until they have been throroughly developed, tested and confirmed to work, please avoid making any submissions or edits to the official RPCS3 wiki.
+TODO: patch list, usage notes, credits

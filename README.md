@@ -13,7 +13,9 @@ All patches are in `imported_patch.yml`; see Installation below.
 # ⚠️ Warning! ⚠️
 **Do not modify `imported_patch.yml`**, for example by copying entries under another PPU executable hash so that they show up for your serial in the Patch Manager. The patches are only made for the versions and serials listed under Supported Games, and RPCS3 skips an entry when another patch file has one with the same name and an equal or higher Patch Version, so an edited file can leave some patches without effect. **Support for the other regions is planned; until your serial is listed, please wait for an update instead of editing the file.**
  
-**The patches are for RPCS3 only. It is not advised to use them on a real PS3, for example by converting them into Artemis PS3 codes.** Many entries rely on features only RPCS3's patch system has, such as extra memory for added code, so a converted code can freeze or crash the game. They are also made and tested only on RPCS3. Real PS3 setups are not supported at this time. Testing with Artemis PS3 is welcome, however; please share your results, including the game's serial and version and the entries you converted.
+**The patches are for RPCS3 only. It is not advised to use them on a real PS3, for example by converting them into Artemis PS3 codes.** Many entries rely on features only RPCS3's patch system has, such as extra memory for added code, so a converted code can freeze or crash the game. They are also made and tested only on RPCS3. Real PS3 setups are not supported at this time.
+
+Testing with Artemis PS3 is welcome, however; please share your results, including the game's serial and version and the entries you converted.
  
 # Installation
 1. Make sure the game is on a version listed under Supported Games; the game list's **Version** column shows the installed version.

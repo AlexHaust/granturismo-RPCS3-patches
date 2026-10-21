@@ -1,3 +1,32 @@
+For the current known issues, see [KNOWN_ISSUES.md](KNOWN_ISSUES.md).
+
+# Changelog - 20261021
+
+## New Supported Games
+
+**Gran Turismo 6 (1.22 and 1.05)**
+
+- BCES01977 (UK)
+
+## New Patches
+
+**Gran Turismo 6 (1.22 and 1.05)**
+
+- Smoke and Dust Resolution Scale Fix
+- Movie Playback Fix
+
+## Improvements and Fixes
+
+**1. Disable MLAA (Gran Turismo 6 1.22)**
+- The Tuning & Servicing pages (Tuning Parts, Custom Parts, Paint and Racing Gear) no longer show a leftover image of the previous screen; their 3D view now appears inside its panel.
+
+**2. Unlock FPS (Gran Turismo 6 1.22 and 1.05)**
+- Gallery View and the new-car screen after a purchase now run at 60 FPS instead of 30, like the other menus.
+
+**3. Disable Steering Wheel Rendering (Gran Turismo 6 1.22 and 1.05, Gran Turismo 5 2.11)**
+- Karts no longer show long lines into the sky, and their cables stay in place when steering.
+- The shift paddles are now hidden on every car, including paddles mounted on the steering column.
+
 # Changelog - 20261014
 
 ## New Patches

@@ -46,4 +46,4 @@ For Artemis PS3 results, include the game's serial and version, the entries you 
 **Issues that do not include all of this information will be ignored and/or closed.**
 
 
-TODO: patch list, usage notes, credits, roadmap
+TODO: patch list, usage notes, credits, roadmap, new issue template
